@@ -1,0 +1,14 @@
+.companyName{
+    border: 1px solid black;
+    border-radius: 5px;
+    padding: 20px;
+    display: flex;
+    justify-content: center;
+    font-weight: bold;
+}
+
+.timeSlotsContainer{ 
+    margin-top: 20px;
+    height: 70vh;
+    overflow: scroll;
+}

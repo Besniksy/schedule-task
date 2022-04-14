@@ -1,0 +1,7 @@
+.companiesContainer {
+    margin: 0 auto;
+    display: flex;
+    justify-content: space-around;
+    width: 80%;
+    padding-top: 40px;
+}

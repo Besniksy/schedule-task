@@ -1,0 +1,42 @@
+.timeSlot{
+    border: 1px solid black;
+    margin-top: 5px;
+    padding: 5px;
+    display: flex;
+    justify-content: center;
+    width: 150px;
+    border-radius: 5px;
+    cursor: pointer;
+    
+}
+
+.timeSlotContainer{
+    display: flex;
+    align-items: center;
+    flex-direction: column;
+}
+
+.disabled{
+    background-color: grey;
+    color: white;
+    border: 1px solid grey;
+    margin-top: 5px;
+    padding: 5px;
+    display: flex;
+    justify-content: center;
+    width: 150px;
+    border-radius: 5px;
+
+}
+.reserved{
+    background-color: green;
+    border: 1px solid green;
+    margin-top: 5px;
+    padding: 5px;
+    display: flex;
+    justify-content: center;
+    width: 150px;
+    border-radius: 5px;
+    cursor: pointer;
+
+}
