@@ -3,8 +3,8 @@ import TimeSlots from '../TimeSlots/TimeSlots';
 import './Company.css'
 import '../TimeSlot/TimeSlot.css'
 
+
 const Company = ({data, handleClick, reservations}) => {
-    console.log(data, "dataaa")
     const reserved = reservations.map((el) => {
         if(el.companyId === data.id){
             return el.start_time + "-" + el.end_time

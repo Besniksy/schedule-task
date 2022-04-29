@@ -3,14 +3,15 @@ import React, { useState, useEffect } from 'react';
 import Company from '../Company/Company';
 import './Companies.css'
 import { FormattedData } from '../Services/FormattedData';
-import { DateTimeService } from '../Services/DateTimeService';
+import { DateTimeService } from '../Services/DateTimeService'; 
+import {TCompanies, TReservations, TSlots} from '../types'
 
 
-const Companies = () => {
-    const [companies, setCompanies] = useState([])
-    const [companiesFormatted, setCompaniesFormatted] = useState([])
-    const [reservations, setReservations] = useState([])
-    const [slotsState, setSlotsState] = useState([])
+const Companies: React.FC = () => {
+    const [companies, setCompanies] = useState<TCompanies>([])
+    const [companiesFormatted, setCompaniesFormatted] = useState<TCompanies>([])
+    const [reservations, setReservations] = useState<TReservations>([])
+    const [slotsState, setSlotsState] = useState<TSlots>([])
 
     useEffect(() => {
         axios.get('http://localhost:3000/companies').then((res) => {
@@ -30,6 +31,7 @@ const Companies = () => {
     useEffect(() => {
         const companiesFormatted = FormattedData.formatCompaniesWithUpdatedTimeSlots(companies, slotsState)
         const groupedByDayArray = DateTimeService.groupedTimeSlotsByDate(companiesFormatted)
+        console.log(groupedByDayArray, "groupedByDayArraygroupedByDayArray")
         setCompaniesFormatted(groupedByDayArray)
 
     }, [slotsState])
@@ -40,8 +42,8 @@ const Companies = () => {
         setSlotsState(touchedSlots)
     }, [reservations])
 
-    const handleClick = (start_time, end_time, selectedDay, companyId, slotId) => {
-        if (reservations.length === 0 || !reservations.some(el => el.companyId === companyId)) {
+    const handleClick = (start_time:string, end_time:string, selectedDay:string, companyId:number, slotId:string) => {
+        if (reservations?.length === 0 || !reservations.some((el) => el.companyId === companyId)) {
             setReservations([...reservations, {
                 start_time,
                 end_time,

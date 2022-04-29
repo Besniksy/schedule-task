@@ -1,7 +1,10 @@
 import * as moment from 'moment'
+import { TCompanies } from '../types';
 
 export class DateTimeService{
-    static groupedTimeSlotsByDate = (companies) => {
+    static groupedTimeSlotsByDate = (companies:TCompanies) => {
+        console.log(companies, "companiescompanies")
+
         const groupedByDayArray = companies.map((company) => {
             const GroupedByDayObj = {};
 
@@ -14,7 +17,7 @@ export class DateTimeService{
                     ...element
                 });
             });
-            const sortedByDate = Object.entries(GroupedByDayObj).sort(function (a, b) {
+            const sortedByDate = Object.entries(GroupedByDayObj).sort((a:Object,b:Object) => {
                 return a[0] - b[0]
             });
 

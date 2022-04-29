@@ -1,8 +1,9 @@
 import * as moment from 'moment'
 import { v4 as uuidv4 } from 'uuid';
+import { TCompanies, TSlots, TReservations } from '../types';
 
 export class FormattedData{
-    static collectAllTimeSlots = (data) => {
+    static collectAllTimeSlots = (data:TCompanies) => {
         const allSlots = data.map((comp) => {
             const slots = comp.time_slots.map((slot) => {
                 return {
@@ -22,7 +23,7 @@ export class FormattedData{
         return mergedSlots
     }
 
-    static formatCompaniesWithUpdatedTimeSlots = (companies, timeSlots) => {
+    static formatCompaniesWithUpdatedTimeSlots = (companies:TCompanies, timeSlots:TSlots) => {
         const companiesFormatted = companies.map((company) => {
             const filteredSlotsByCompany = timeSlots.filter((slot) => slot.companyId === company.id)
             return {
@@ -32,7 +33,7 @@ export class FormattedData{
         })
         return companiesFormatted
     }
-    static updateTimeSlotsStatus = (slots, ids, reservations) => {
+    static updateTimeSlotsStatus = (slots:TSlots, ids:Array<string>, reservations:TReservations) => {
         const touchedSlots = slots.map((element) => {
             const condition = reservations.some(reserve => (element.start_time.toString() >= reserve.start_time.toString()
                 && element.start_time.toString() < reserve.end_time.toString()
